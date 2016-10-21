@@ -1,0 +1,67 @@
+# Ignore paths that contain user-generated content.
+/sites/default/*
+/sites/*/files
+/sites/*/private
+/private/wraith/
+/files/*
+/cache
+/sites/all/modules/development
+/sites/all/themes/custom/a-theme/node_modules/
+/sites/all/themes/custom/a-theme/node_modules/
+
+# ** Only works in OSs that support newer versions of fnmatch (Bash 4+)
+/sites/default/**/files
+/sites/default/**/private
+
+# Packages #
+############
+*.7z
+*.dmg
+*.bz2
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Logs and databases #
+######################
+*.log
+*.sql
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store*
+ehthumbs.db
+Icon
+
+Thumbs.db
+._*
+.idea
+
+# Vim generated files #
+######################
+*.un~
+
+# SASS #
+##########
+.sass-cache
+/sites/all/themes/custom/zictheme/stylesheets/*
+/sites/all/themes/custom/zictheme_admin/stylesheets/*
+
+# CODEKIT #
+###########
+config.codekit
+
+# K2 Branch Specific #
+######################
+sites/default/settings.non-pantheon.php
+
+# Added for Sauce, useful for all composer projects #
+#####################################################
+**/vendor
+**/composer.phar
+**/composer.lock
