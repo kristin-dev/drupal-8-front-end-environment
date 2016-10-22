@@ -1,0 +1,43 @@
+// This includes SUSY grid layout styles that may be used in content or
+// block class fields above the breakpoint-normal-px.
+@include breakpoint($breakpoint-normal-px) {
+  .span-1 {
+    @include span(1);
+  }
+  .span-2 {
+    @include span(2);
+  }
+  .span-3 {
+    @include span(3);
+  }
+  .span-4 {
+    @include span(4);
+  }
+  .span-5 {
+    @include span(5);
+  }
+  .span-6 {
+    @include span(6);
+  }
+  .span-7 {
+    @include span(7);
+  }
+  .span-8 {
+    @include span(8);
+  }
+  .span-9 {
+    @include span(9);
+  }
+  .span-10 {
+    @include span(10);
+  }
+  .span-11 {
+    @include span(11);
+  }
+  .span-12 {
+    @include span(12);
+  }
+}
+.span-last {
+  margin-right: 0;
+}

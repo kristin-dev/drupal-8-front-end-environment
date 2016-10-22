@@ -1,0 +1,17 @@
+.block-system-breadcrumb-block {
+  clear: both;
+}
+
+.region-breadcrumb-wrapper {
+  @include container($breakpoint-wide-px);
+  display: none;
+  @include breakpoint($breakpoint-wide-px) {
+    display: block;
+  }
+}
+
+.region-breadcrumb {
+  @include breakpoint($breakpoint-wide-px) {
+    @include span(12);
+  }
+}

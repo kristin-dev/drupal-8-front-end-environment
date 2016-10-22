@@ -1,0 +1,57 @@
+.node--type-team-member {
+  .team-member--left {
+    @include breakpoint($breakpoint-narrow-px) {
+      @include span(12);
+    }
+    @include breakpoint($breakpoint-normal-px) {
+      @include span(5);
+    }
+  }
+  .team-member--right {
+    @include breakpoint($breakpoint-narrow-px) {
+      @include span(12);
+    }
+    @include breakpoint($breakpoint-normal-px) {
+      @include span(7 last);
+    }
+  }
+  .page-title {
+    margin-bottom: 0;
+    color: $color-blue-powder;
+  }
+  .team-member--job-title {
+    margin: .5em 0;
+    color: $color-dark-grey;
+    font-style: italic;
+  }
+  .team-member--quote {
+    .field--name-field-quote {
+      @include blockquote-style($color-blue-powder);
+    }
+  }
+  .view-blogs {
+    @include triangle-list-item($color-blue-powder);
+    .view-header h3 {
+      margin-bottom: .5em;
+    }
+    .view-footer {
+      text-transform: uppercase;
+      padding-left: gutter() * 3;
+      p {
+        margin: gutter() * 1.5 0;
+      }
+    }
+  }
+  .topics-interests {
+    @include span(12);
+  }
+  .team-member--links {
+    @include social-links(
+      $color-white,
+      $color-white,
+      $color-orange-slice,
+      $color-vivid-orange,
+      .2s
+    );
+  }
+}

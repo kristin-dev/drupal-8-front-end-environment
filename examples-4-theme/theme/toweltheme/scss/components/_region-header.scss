@@ -1,0 +1,81 @@
+.header-duplicate {
+  @include opacity(0);
+}
+
+.region-header-wrapper {
+  @include container($breakpoint-wide-px);
+}
+
+.header-pinned {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $breakpoint-wide-px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  .toolbar-fixed & {
+    top: 40px;
+  }
+  .toolbar-fixed.toolbar-horizontal.toolbar-tray-open & {
+    top: 80px;
+  }
+  .region-header {
+    min-height: 68px;
+    padding-top: 10px;
+  }
+  .site-logo {
+    height: 60px;
+    img {
+      width: 110px;
+    }
+    @include breakpoint($breakpoint-normal-px) {
+      margin-top: 0;
+    }
+  }
+  .region-breadcrumb-wrapper {
+    display: none;
+  }
+}
+
+.region-header {
+  @include background-image(linear-gradient($color-white, $color-white 97%, lighten($color-orange-slice, 30) 99%, lighten($color-blue-powder, 35)));
+  @include clearfix;
+  min-height: 68px;
+  margin-bottom: gutter();
+  overflow: visible;
+  padding-top: 10px;
+  width: 100%;
+  @include breakpoint($breakpoint-normal-px) {
+    min-height: 107px;
+    padding-top: 20px;
+  }
+  @include breakpoint($breakpoint-wide-px) {
+    @include span(12);
+  }
+}
+
+.site-logo {
+  display: inline-block;
+  height: 90px;
+  margin-left: 10px;
+  margin-top: 0;
+  position: relative;
+  width: 150px;
+
+  img {
+    position: absolute;
+    top: 0;
+    width: 110px;
+  }
+  @include breakpoint($breakpoint-normal-px) {
+    margin-top: 5px;
+    img {
+      width: auto;
+    }
+  }
+  @include breakpoint($breakpoint-wide-px) {
+    margin-left: 0;
+  }
+}

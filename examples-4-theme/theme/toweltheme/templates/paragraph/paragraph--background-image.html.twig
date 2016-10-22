@@ -1,0 +1,7 @@
+{% set classes = ['background-image'] %}
+{% set classes = classes|merge(flexible_classes) %}
+<div class="background-wrapper">
+    <div{{ attributes.addClass(classes) }}>
+        {{ content }}
+    </div>
+</div>

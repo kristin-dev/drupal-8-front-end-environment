@@ -1,0 +1,30 @@
+toweltheme.mobile:
+  label: breakpoint-mobile
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+toweltheme.narrow:
+  label: breakpoint-narrow
+  mediaQuery: 'all and (min-width: 480px)'
+  weight: 1
+  multipliers:
+    - 1x
+toweltheme.normal:
+  label: breakpoint-normal
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 2
+  multipliers:
+    - 1x
+toweltheme.tablet:
+  label: breakpoint-tablet
+  mediaQuery: 'all and (min-width: 1024px)'
+  weight: 3
+  multipliers:
+    - 1x
+toweltheme.wide:
+  label: breakpoint-wide
+  mediaQuery: 'all and (min-width: 1280px)'
+  weight: 4
+  multipliers:
+    - 1x

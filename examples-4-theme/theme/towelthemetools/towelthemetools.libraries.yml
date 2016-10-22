@@ -1,0 +1,7 @@
+kss:
+  css:
+    theme:
+      css/kss.css: {}
+      css/chroma-kss-styles.css: {}
+      css/kss-only.css: {}
+      css/system.admin.overrides.css: {}

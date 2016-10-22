@@ -1,0 +1,20 @@
+.topics-interests {
+  text-align: center;
+  border-top: 1px solid $color-light-grey;
+  border-bottom: 1px solid $color-light-grey;
+  padding: 10px 0;
+  text-transform: uppercase;
+  a {
+    margin-right: 2em;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  .field__item {
+    display: inline;
+    margin-right: 2em;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

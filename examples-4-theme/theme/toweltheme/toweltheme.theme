@@ -1,0 +1,162 @@
+<?php
+
+use Drupal\Core\Entity\ContentEntityBase;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Preprocess node.
+ * drupal.stackexchange.com/questions/186246/how-to-print-core-block-or-views-block-in-node-html-twig-drupal-8
+ */
+function toweltheme_preprocess_node(&$variables) {
+  # This creates a variable named 'my_recent_blogs' that can be used
+  # in twig template files.
+  $variables['block_blogs_team_members'] = views_embed_view('blogs', 'block_blogs_team_members');
+}
+
+/**
+ * Preprocesses paragraphs.
+ */
+function toweltheme_preprocess_paragraph(&$variables) {
+  $variables['flexible_classes'] = [];
+  $type = $variables['paragraph']->getType();
+  $type_function = __FUNCTION__ . '_' . $type;
+
+  if (function_exists($type_function)) {
+    $type_function($variables);
+  }
+}
+
+/**
+ * Preprocesses background_image paragraphs.
+ */
+function toweltheme_preprocess_paragraph_background_image(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // Mobile background image behavior.
+  if (!$paragraph->field_mobile_bg_image_behavior->isEmpty()) {
+    $term = $paragraph->field_mobile_bg_image_behavior->entity;
+    toweltheme_add_term_ref_classes($variables, $term);
+  }
+
+  // Show background image on print.
+  if (!$paragraph->field_show_on_print->isEmpty()) {
+    $variables['flexible_classes'][] = 'show-on-print';
+  }
+}
+
+/**
+ * Preprocesses content_area paragraphs.
+ */
+function toweltheme_preprocess_paragraph_content_area(&$variables) {
+  $paragraph_area = $variables['paragraph'];
+
+  // Area layout.
+  if (!$paragraph_area->field_area_layout->isEmpty()) {
+    $term = $paragraph_area->field_area_layout->entity;
+    toweltheme_add_term_ref_classes($variables, $term);
+    $variables['flexible_classes'][] = 'content-area-columns';
+  }
+
+  // Area style.
+  if (!$paragraph_area->field_content_area_style->isEmpty()) {
+    $paragraph_area_style = $paragraph_area->field_content_area_style->entity;
+    $paragraph_area_style_term_ref_field_names = array(
+      'field_area_bg_width',
+      'field_bg_and_font_colors',
+      'field_content_items_padding',
+    );
+    toweltheme_add_multiple_term_ref_classes_from_parent($variables, $paragraph_area_style, $paragraph_area_style_term_ref_field_names);
+  }
+}
+
+/**
+ * Preprocesses content_item paragraphs.
+ */
+function toweltheme_preprocess_paragraph_content_item(&$variables) {
+  $paragraph_item = $variables['paragraph'];
+
+  // Item Layout
+  if (!$paragraph_item->field_item_layout->isEmpty()) {
+    $term = $paragraph_item->field_item_layout->entity;
+    toweltheme_add_term_ref_classes($variables, $term);
+  }
+
+  // Item Style
+  if (!$paragraph_item->field_content_item_style->isEmpty()) {
+    $paragraph_item_style = $paragraph_item->field_content_item_style->entity;
+    $paragraph_item_style_term_ref_field_names = array(
+      'field_bg_and_font_colors',
+    );
+    toweltheme_add_multiple_term_ref_classes_from_parent($variables, $paragraph_item_style, $paragraph_item_style_term_ref_field_names);
+  }
+}
+
+/**
+ * Preprocesses cta paragraphs.
+ */
+function toweltheme_preprocess_paragraph_cta(&$variables) {
+  $paragraph = $variables['paragraph'];
+
+  // CTA type
+  if (!$paragraph->field_cta_type->isEmpty()) {
+    $term = $paragraph->field_cta_type->entity;
+    toweltheme_add_term_ref_classes($variables, $term);
+  }
+}
+
+/**
+ * Adds classes to an array from multiple field_css_classes fields attached to
+ * a term referenced from another entity.
+ *
+ * @param $variables array Preprocessor variables.
+ * @param $parent_entity ContentEntityBase A fieldable entity.
+ * @param $field_names array Names of term ref fields on the entity.
+ */
+function toweltheme_add_multiple_term_ref_classes_from_parent(&$variables, $parent_entity, $field_names) {
+  foreach ($field_names as $field_name) {
+    toweltheme_add_term_ref_classes_from_parent($variables, $parent_entity, $field_name);
+  }
+}
+
+/**
+ * Adds classes to an array from a field_css_classes field attached to a term
+ * referenced from another entity.
+ *
+ * @param $variables array Preprocessor variables.
+ * @param $parent_entity ContentEntityBase A fieldable entity.
+ * @param $field_name string Name of a term ref field on the entity.
+ */
+function toweltheme_add_term_ref_classes_from_parent(&$variables, $parent_entity, $field_name) {
+  if (!$parent_entity->{$field_name}->isEmpty()) {
+    $term = $parent_entity->{$field_name}->entity;
+    toweltheme_add_term_ref_classes($variables, $term);
+  }
+}
+
+/**
+ * Adds classes to an array from a field_css_classes field attached to a term.
+ *
+ * @param $variables array Preprocessor variables.
+ * @param $term Term Taxonomy term.
+ */
+function toweltheme_add_term_ref_classes(&$variables, $term) {
+  if (!$term->field_css_classes->isEmpty()) {
+    // This differs from Drupal\Component\Utility\Html::cleanCssIdentifier in
+    // that it allows spaces and underscores.
+    $variables['flexible_classes'][] = Html::escape($term->field_css_classes->value);
+  }
+}
+
+/**
+ * Sanitizes a string for use as a CSS class, id, or other attribute.
+ *
+ * This differs from Drupal\Component\Utility\Html::cleanCssIdentifier in that
+ * it allows spaces and underscores.
+ *
+ * @param $class string A single or space separated list of CSS classes.
+ * @return string The sanitized class or classes.
+ */
+function toweltheme_clean_css_identifier($class) {
+  return Html::escape($class);
+}

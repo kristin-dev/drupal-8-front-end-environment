@@ -1,0 +1,3 @@
+{% set classes = ['cta'] %}
+{% set classes = classes|merge(flexible_classes) %}
+<div{{ attributes.addClass(classes) }}>{{ content }}</div>

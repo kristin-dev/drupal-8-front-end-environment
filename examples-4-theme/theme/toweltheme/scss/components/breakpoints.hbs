@@ -1,0 +1,44 @@
+<p>The following breakpoints are used by this theme and are automatically generated from toweltheme.breakpoints.yml:</p>
+<ul>
+  <li>
+    <p>Breakpoint Mobile</p>
+    <ul>
+      <li>
+        <p><em>*The mobile breakpoint has no media query</em></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Breakpoint Narrow ($breakpoint-narrow)</p>
+    <ul>
+      <li>
+        <p>all and (min-width: 480px)</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Breakpoint Normal ($breakpoint-normal)</p>
+    <ul>
+      <li>
+        <p>all and (min-width: 768px)</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Breakpoint Wide ($breakpoint-wide)</p>
+    <ul>
+      <li>
+        <p>all and (min-width: 1280)</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+<p> They can be used in scss like so:</p>
+<pre>
+.example-class {
+  @include susy-media($breakpoint-narrow) {
+    background-color: #ff5400;
+  }
+}
+</pre>
+<p>Other breakpoints may eventually be defined directly in scss/components/_breakpoints.scss if they do not need to be accessed from PHP or JS.</p>

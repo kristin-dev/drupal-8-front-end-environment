@@ -1,0 +1,8 @@
+towelthemetools.design_component_library:
+  path: /admin/appearance/design/toweltheme/{subpath}
+  defaults:
+    _title: 'Towel Design Component Library'
+    _controller: '\Drupal\towelthemetools\Controller\DefaultController::componentLibrary'
+    subpath: ''
+  requirements:
+    _permission: 'administer site configuration'

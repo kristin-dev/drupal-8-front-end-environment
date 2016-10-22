@@ -1,0 +1,116 @@
+footer {
+  background-color: $color-blue-powder;
+  font-weight: 200;
+  @include container(20);
+}
+
+.region-footer {
+  @include span(11);
+  @include push(1);
+  @include breakpoint($breakpoint-normal-px) {
+    @include span(19 of 20);
+    @include push(1 of 20);
+  }
+  // @todo: Refactor this!
+  color: $color-white;
+  margin-bottom: gutter();
+  margin-top: gutter() * 2;
+  ul {
+    margin: 0;
+    & > li {
+      // display: inline-block;
+      margin: 0 0 0 2px;
+      padding: 0;
+    }
+  }
+  h2 {
+    font-size: 1.5em;
+    color: $color-white;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: gutter() * 2;
+  }
+  p {
+    margin: .5em 0;
+  }
+  .menu .is-active {
+    color: $color-white;
+  }
+  a {
+    color: $color-white;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      @include transition-property(border);
+      @include transition-duration(.5s);
+      color: $color-white;
+      border-bottom: 1px solid $color-white;
+    }
+  }
+  // The span-9 footer menu block.
+  .menu-item--expanded {
+    @include span(12);
+    list-style-type: none;
+    list-style-image: none;
+    margin-top: gutter(3);
+    margin-bottom: gutter();
+    @include breakpoint($breakpoint-narrow-px) {
+      @include gallery(6);
+      margin-top: gutter();
+    }
+    @include breakpoint($breakpoint-normal-px + 102px) {
+      @include reset-gallery;
+      &:last-child {
+        margin-right: gutter();
+      }
+      margin-top: gutter();
+      @include span(5 of 20);
+    }
+    & > a {
+      display: inline-block;
+      font-size: 1.5em;
+      line-height: 1.2em;
+      color: $color-white;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: gutter() * 2;
+    }
+  }
+  .footer--contact {
+    @include span(12);
+    margin-top: gutter(3);
+    margin-bottom: gutter();
+    @include breakpoint($breakpoint-narrow-px) {
+      @include gallery(6);
+      margin-top: gutter();
+    }
+    @include breakpoint($breakpoint-normal-px + 102px) {
+      @include reset-gallery;
+      @include span(4 of 20);
+    }
+  }
+  .footer--copyright {
+    @include span(12);
+    clear: left;
+    margin-top: gutter(3);
+    @include breakpoint($breakpoint-narrow-px) {
+      margin-top: gutter();
+    }
+    margin-right: 0;
+    font-size: 1rem;
+  }
+  .linkicon__item {
+    border-bottom: 0;
+    &:hover {
+      border-bottom: 0;
+    }
+  }
+  @include social-links(
+    $color-blue-powder,
+    $color-white,
+    $color-white,
+    $color-vivid-orange,
+    .2s
+  );
+}

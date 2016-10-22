@@ -1,0 +1,6 @@
+name: 'Towel Theme Tools'
+description: 'Module functions for the Towel theme.'
+core: 8.x
+package: Theme Enhancements
+type: module
+configure: towelthemetools.design_component_library

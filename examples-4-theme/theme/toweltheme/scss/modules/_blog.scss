@@ -1,0 +1,39 @@
+.node--type-blog {
+  .blog--date,
+  .blog--authors,
+  .field--name-field-date {
+    display: inline-block;
+  }
+  .field--name-body {
+    margin-top: 1em;
+    p {
+      margin-top: 0;
+    }
+  }
+  .blog--date {
+    @include breakpoint($breakpoint-narrow-px) {
+      display: inline;
+      font-size: 1.2em;
+    }
+  }
+  .blog--authors {
+    @include breakpoint($breakpoint-narrow-px) {
+      display: inline;
+      font-size: 1.2em;
+    }
+  }
+  .field--name-field-image-er {
+    @include breakpoint($breakpoint-narrow-px) {
+      @include span(12)
+    }
+    @include breakpoint($breakpoint-normal-px) {
+      @include span(6 at 6 last);
+      img {
+        margin-left: gutter();
+      }
+    }
+  }
+  .topics-interests {
+    @include span(12);
+  }
+}

@@ -1,0 +1,90 @@
+// Buttons
+//
+// Buttons for Towel.
+//
+// Markup: button.hbs
+//
+// Style guide: buttons
+%button {
+  @include border-radius(6px);
+  border: 2px solid transparent;
+  display: inline-block;
+  padding: .66em 1.5em;
+}
+
+button,
+.button {
+  @extend %button;
+}
+
+.button-primary,
+%button-primary {
+  @extend %button;
+  background-color: darken($color-orange-slice, 3%);
+  border: 2px solid darken($color-orange-slice, 8%);
+  color: $color-white;
+  &:visited,
+  &:link {
+    @extend %button-primary;
+  }
+  &:active,
+  &:hover {
+    background-color: darken($color-orange-slice, 10%);
+    border: 2px solid lighten($color-blue-powder, 10%);
+    color: $color-white;
+  }
+}
+
+.button-secondary,
+%button-secondary {
+  @extend %button;
+  background-color: $color-blue-powder;
+  border: 2px solid darken($color-blue-powder, 15%);
+  color: $color-white;
+  &:visited,
+  &:link {
+    @extend %button-secondary;
+  }
+  &:active,
+  &:hover {
+    background-color: darken($color-blue-powder, 5%);
+    border: 2px solid darken($color-orange-slice, 40%);
+    color: $color-white;
+  }
+}
+
+.button-tertiary,
+%button-tertiary {
+  @extend %button;
+  background-color: lighten(mix($color-blue-powder, $color-orange-slice), 40%);
+  border: 2px solid lighten(mix($color-blue-powder, $color-orange-slice), 25%);
+  color: $color-blue-powder;
+  &:visited,
+  &:link {
+    @extend %button-tertiary;
+  }
+  &:active,
+  &:hover {
+    background-color: lighten($color-orange-slice, 30%);
+    border: 2px solid lighten($color-orange-slice, 20%);
+    color: $color-blue-powder;
+  }
+}
+
+.cta-type-primary,
+.cta-type-secondary,
+.cta-type-tertiary {
+  display: inline-block;
+}
+
+.cta-type-primary a {
+  @extend %button-primary;
+}
+
+.cta-type-secondary a {
+  @extend %button-secondary;
+}
+
+.cta-type-tertiary a {
+  @extend %button-tertiary;
+}

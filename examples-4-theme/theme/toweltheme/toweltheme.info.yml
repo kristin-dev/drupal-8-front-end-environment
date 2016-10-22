@@ -1,0 +1,21 @@
+name: Towel
+type: theme
+description: The Towel theme is a Drupal 8 base theme with sensible defaults. It is a stylish, versatile, and reusable theme for projects to get up and running quickly.
+core: 8.x
+base theme: classy
+libraries:
+  - toweltheme/global
+libraries-override:
+  core/normalize: false
+regions:
+  header: Header
+  breadcrumb: Breadcrumb
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: Footer
+  # The page_top and page_bottom regions are hidden, which means they will not
+  # show up on the block layout page. But they are required in order for the
+  # html.html.twig to work properly, so do not delete them.
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'

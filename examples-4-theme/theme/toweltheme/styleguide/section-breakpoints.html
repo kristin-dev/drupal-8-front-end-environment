@@ -1,0 +1,190 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <meta name="description" content="">
+  <meta name="generator" content="kss-node">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="kss-assets/kss.css">
+  <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style-guide/chroma-kss-styles.css">
+<link rel="stylesheet" href="../css/style-guide/kss-only.css">
+
+</head>
+<body id="kss-node">
+
+<div class="kss-sidebar kss-style">
+  <header class="kss-header">
+    <h1 class="kss-doc-title"></h1>
+  </header>
+  <nav class="kss-nav">
+    <ul class="kss-nav__menu">
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="./">
+          <span class="kss-nav__ref">0</span
+          ><span class="kss-nav__name">Overview</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-breakpoints.html">
+          <span class="kss-nav__ref">1</span><span class="kss-nav__name">Breakpoints</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-buttons.html">
+          <span class="kss-nav__ref">2</span><span class="kss-nav__name">Buttons</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-colors.html">
+          <span class="kss-nav__ref">3</span><span class="kss-nav__name">Colors</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a class="kss-nav__menu-link" href="section-content-area.html">
+          <span class="kss-nav__ref">4</span><span class="kss-nav__name">Flexible Content Area</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article role="main" class="kss-main">
+
+    <div id="kssref-breakpoints" class="kss-section kss-section--depth-1">
+
+    <div class="kss-style">
+      <h1 class="kss-title kss-title--level-1">
+        <a class="kss-title__permalink" href="#kssref-breakpoints">
+          <span class="kss-title__ref">
+            1
+            <span class="kss-title__permalink-hash">
+                #breakpoints
+            </span>
+          </span>
+          Breakpoints
+        </a>
+      </h1>
+
+      <div class="kss-description">
+        <p>Breakpoints for Towel.</p>
+
+      </div>
+
+    </div>
+
+      <div class="kss-modifier__wrapper">
+        <div class="kss-modifier__heading kss-style">
+          Example
+        </div>
+        <div class="kss-modifier__example">
+          <p>The following breakpoints are used by this theme and are automatically generated from toweltheme.breakpoints.yml:</p>
+<ul>
+  <li>
+    <p>Breakpoint Mobile</p>
+    <ul>
+      <li>
+        <p><em>*The mobile breakpoint has no media query</em></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Breakpoint Narrow ($breakpoint-narrow)</p>
+    <ul>
+      <li>
+        <p>all and (min-width: 480px)</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Breakpoint Normal ($breakpoint-normal)</p>
+    <ul>
+      <li>
+        <p>all and (min-width: 768px)</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Breakpoint Wide ($breakpoint-wide)</p>
+    <ul>
+      <li>
+        <p>all and (min-width: 1280)</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+<p> They can be used in scss like so:</p>
+<pre>
+.example-class {
+  @include susy-media($breakpoint-narrow) {
+    background-color: #ff5400;
+  }
+}
+</pre>
+<p>Other breakpoints may eventually be defined directly in scss/components/_breakpoints.scss if they do not need to be accessed from PHP or JS.</p>
+
+        </div>
+      </div>
+
+      <div class="kss-markup kss-style">
+        <pre class="prettyprint linenums lang-html"><code data-language="html">&lt;p&gt;The following breakpoints are used by this theme and are automatically generated from toweltheme.breakpoints.yml:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Breakpoint Mobile&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;em&gt;*The mobile breakpoint has no media query&lt;/em&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Breakpoint Narrow ($breakpoint-narrow)&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;all and (min-width: 480px)&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Breakpoint Normal ($breakpoint-normal)&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;all and (min-width: 768px)&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Breakpoint Wide ($breakpoint-wide)&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;all and (min-width: 1280)&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt; They can be used in scss like so:&lt;/p&gt;
+&lt;pre&gt;
+.example-class {
+  @include susy-media($breakpoint-narrow) {
+    background-color: #ff5400;
+  }
+}
+&lt;/pre&gt;
+&lt;p&gt;Other breakpoints may eventually be defined directly in scss/components/_breakpoints.scss if they do not need to be accessed from PHP or JS.&lt;/p&gt;
+</code></pre>
+      </div>
+
+      <div class="kss-source kss-style">
+        Source: <code>_breakpoints.scss</code>, line 1
+      </div>
+
+    </div>
+</article>
+
+
+
+
+<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>

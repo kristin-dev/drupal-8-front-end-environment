@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function towelthemetools_theme() {
+  return array(
+    'towelthemetools_no_escape' => array(
+      'function' => 'towelthemetools_no_escape',
+      'variables' => array('output' => ''),
+    ),
+  );
+}
+
+function towelthemetools_no_escape($variables) {
+  return $variables['output'];
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ *
+ * Switches view mode for images in content items based on content area layout.
+ */
+function towelthemetools_entity_view_mode_alter(&$view_mode, Drupal\Core\Entity\EntityInterface $entity, $context) {
+  // If this is an image media entity.
+  if ($entity->getEntityTypeId() === 'media' && $entity->bundle() === 'image') {
+    $referencing_entity = $entity->_referringItem->getEntity();
+    // If the image is referenced from a paragraph:
+    if ($referencing_entity->getEntityTypeId() === 'paragraph') {
+      $referencing_entity_bundle = $referencing_entity->bundle();
+      // If the paragraph type is a content item or background image:
+      if ($referencing_entity_bundle === 'content_item' || $referencing_entity_bundle === 'background_image') {
+        // If the paragraph type is a content item:
+        if ($referencing_entity_bundle === 'content_item') {
+          // Gets the content area paragraph.
+          $content_area = $referencing_entity->_referringItem->getEntity();
+        }
+        // Else the paragraph type is a background image:
+        else {
+          $referencing_entity_parent = $referencing_entity->_referringItem->getEntity();
+          // If the background image is referenced from a content item style
+          // paragraph:
+          if ($referencing_entity_parent->bundle() === 'content_item_style') {
+            // Gets the content area paragraph.
+            $content_area = $referencing_entity_parent->_referringItem->getEntity()->_referringItem->getEntity();
+          }
+        }
+        // If a content area paragraph was found and the layout field is set:
+        if (isset($content_area) && !$content_area->field_area_layout->isEmpty()) {
+          $layout = $content_area->field_area_layout->entity->field_machine_name->value;
+          // Switches the view mode based on the layout field.
+          switch ($layout) {
+            case 'one_column':
+              $view_mode = 'full_content';
+              break;
+            case 'two_column':
+              $view_mode = 'columns_2';
+              break;
+            case 'three_column':
+              $view_mode = 'columns_3';
+              break;
+            case 'four_column':
+              $view_mode = 'columns_4';
+              break;
+          }
+        }
+      }
+    }
+  }
+}

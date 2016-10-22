@@ -1,0 +1,86 @@
+// Flexible Content Area
+//
+// Styling for the Flexible Content Area
+//
+// Markup: content-area.hbs
+//
+// Style guide: content-area
+.content-area {
+  position: relative;
+}
+
+.background-wrapper {
+  &.mobile-bg-image-behavior-hide,
+  &.mobile-bg-image-behavior-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+  }
+  .content-item & {
+    &.mobile-bg-image-behavior-hide,
+    &.mobile-bg-image-behavior-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -50;
+    }
+  }
+  @include breakpoint($breakpoint-normal-px) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+  }
+  &.mobile-bg-image-behavior-hide {
+    img {
+      @include breakpoint($breakpoint-normal-px) {
+        display: inherit;
+      }
+      display: none;
+    }
+  }
+}
+//
+//.content-items {
+//  overflow: hidden;
+//}
+
+.content-item {
+  position: relative;
+  @include breakpoint($breakpoint-narrow-px) {
+    .content-area-layout-four-column & {
+      @include gallery(6);
+    }
+    .content-area-layout-three-column & {
+      @include span(4);
+    }
+    .content-area-layout-two-column & {
+      @include span(6);
+    }
+    .content-area-layout-one-column & {
+      @include span(12);
+    }
+    .content-items &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  @include breakpoint($breakpoint-normal-px) {
+    .content-area-layout-four-column & {
+      @include reset-gallery;
+      @include span(3);
+    }
+    .items-padding-none.content-area-layout-four-column & {
+      float: left;
+      width: percentage(1/4);
+      margin: 0;
+    }
+  }
+}
+
+// Styling for default (none) chosen for flexible content area.
+.content-item-header {
+  font-size: 2em;
+  line-height: 1.2em;
+}
+

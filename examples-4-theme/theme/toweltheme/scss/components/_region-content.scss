@@ -1,0 +1,14 @@
+.region-content-wrapper {
+  @include container($breakpoint-wide-px);
+}
+.region-content {
+  @include span(12);
+  @include clearfix;
+  margin-bottom: gutter();
+}
+.align-left {
+  margin-right: gutter();
+}
+.align-right {
+  margin-left: gutter();
+}

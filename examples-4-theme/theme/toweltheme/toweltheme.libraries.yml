@@ -1,0 +1,11 @@
+global:
+  css:
+    theme:
+      css/style.css: {}
+  js:
+    js_min/script.js: {}
+    //use.fontawesome.com/d3fdf4e5dc.js: { type: external, minified: true }
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal

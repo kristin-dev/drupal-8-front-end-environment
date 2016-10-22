@@ -1,0 +1,5 @@
+services:
+  theme.negotiator.towelthemetools:
+    class: Drupal\towelthemetools\Theme\TowelthemetoolsNegotiator
+    tags:
+      - { name: theme_negotiator, priority: 0 }

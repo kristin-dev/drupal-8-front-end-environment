@@ -1,0 +1,14 @@
+.ds-2col-stacked > .group-left {
+  @include span(12 of 12 last);
+  @include rt(narrow) {
+    @include span(6 of 12);
+  }
+}
+
+.ds-2col-stacked > .group-right {
+  @include span(12 of 12 last);
+  @include rt(narrow) {
+    @include span(6 of 12 last);
+  }
+}
+

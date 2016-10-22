@@ -1,0 +1,112 @@
+@mixin rt($bp) {
+  @if $bp == 'narrow' {
+    @media (min-width: 480px) {
+      @content;
+    }
+  } @else if $bp == 'normal' {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $bp == 'tablet' {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $bp == 'large' {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+@mixin reset-gallery {
+  &:nth-child(1n) {
+    margin-left: 0;
+    margin-right: gutter();
+    clear: none;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@mixin social-links($color-font-off, $color-font-over, $color-bg-off, $color-bg-over, $duration) {
+  [class*="fa fa-"] {
+    background-color: $color-bg-off;
+    border-radius: 30px;
+    color: $color-font-off;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin: auto 3px;
+    width: 30px;
+    font-size: 18px;
+    text-align: center;
+    &:hover {
+      color: $color-font-over;
+      background-color: $color-bg-over;
+      @include transition-property(color, background-color);
+      @include transition-duration($duration);
+    }
+  }
+}
+
+@mixin triangle-list-item($color-font-off) {
+  ul {
+    list-style-type: none;
+    margin: 0 0 0 gutter();
+    padding: 0;
+  }
+  li {
+    margin: 0;
+    padding: 0;
+    &:before {
+      content: "\25B8";
+      padding-right: 3px;
+      color: $color-font-off;
+    }
+  }
+}
+
+@mixin blockquote-style($color-font-off) {
+  // todo: Refactor this!
+  & {
+    display: block;
+    position: relative;
+    font-family: Merriweather;
+    font-style: italic;
+    text-align: center;
+    margin: gutter() * 3 gutter() * 6 gutter() * 3 gutter() * 4;
+    padding: gutter() * 1.5 0;
+    border-top: 1px solid $color-light-grey;
+    border-bottom: 1px solid $color-light-grey;
+    p,
+    blockquote {
+      margin: 0 0 gutter() 0;
+      padding: 0;
+    }
+    .field--name-field-source-name {
+      font-style: normal;
+      &::before {
+        content: "\2013\0020";
+      }
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      font-family: Didot;
+      font-size: 7.8125em;
+      font-weight: 300;
+      color: $color-font-off;
+    }
+    &::before {
+      top: .5em;
+      left: -.5em;
+      content: "\201C";
+    }
+    &::after {
+      right: -.2em;
+      bottom: .1em;
+      content: "\201D";
+    }
+  }
+}

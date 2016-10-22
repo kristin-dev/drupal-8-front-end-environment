@@ -1,0 +1,4 @@
+{% set classes = ['content-item-sub-header'] %}
+{% for item in items %}
+  <div{{ attributes.addClass(classes) }}>{{ item.content }}</div>
+{% endfor %}

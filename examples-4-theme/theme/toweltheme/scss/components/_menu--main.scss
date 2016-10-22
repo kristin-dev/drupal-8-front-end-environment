@@ -1,0 +1,139 @@
+header {
+  z-index: 1;
+}
+
+.menu--main-outer-wrapper {
+  position: relative;
+}
+
+.menu--main {
+  float: right;
+  font-size: 28px;
+  font-weight: 300;
+  text-align: right;
+  @include breakpoint($breakpoint-normal-px) {
+    font-size: 22px;
+  }
+}
+
+.header-pinned .menu--main__list {
+  li a {
+    padding: 10px;
+    margin: 10px 0 16px;
+  }
+}
+
+.menu--main__list {
+  $outside-border: lighten($color-blue-powder, 35);
+  $inside-shadow:  lighten($color-orange-slice, 25);
+  background-color: $color-white;
+  list-style: none;
+  margin: 0;
+  padding: 30px 40px;
+  opacity: 0;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  top: 2px;
+  visibility: hidden;
+  &.burger-open {
+    @include box-shadow($outside-border 1px 1px 1px, $inside-shadow 0 0 5px 1px inset);
+    opacity: 1;
+    visibility: visible;
+  }
+  li a {
+    @include transition-property(color, border);
+    @include transition-duration(.5s);
+    display: inline-block;
+    min-width: 170px;
+    padding: 14px 0;
+    &.is-active,
+    &:hover {
+      color: $color-orange-slice;
+    }
+  }
+  @include breakpoint($breakpoint-normal-px) {
+    background-color: transparent;
+    opacity: 1;
+    padding: 0;
+    position: static;
+    text-align: left;
+    visibility: visible;
+    &.burger-open {
+      @include box-shadow(none);
+    }
+    li {
+      display: inline-block;
+      margin: 0 20px;
+      a {
+        border-bottom: 3px solid transparent;
+        min-width: 0;
+        padding: 14px 10px;
+        margin: 26px 0;
+        &.is-active,
+        &:hover {
+          border-bottom-color: $color-orange-slice;
+        }
+      }
+      &:last-of-type a {
+        background-color: $color-light-peach;
+      }
+    }
+  }
+}
+
+.burger-wrapper {
+  position: relative;
+}
+
+.burger {
+  @include transition(border-bottom .5s ease-in-out);
+  $width: 28px;
+  $thickness: 4px;
+  background: none;
+  border: 0;
+  border-bottom: $thickness solid $color-blue-powder;
+  display: inline-block;
+  outline: 0;
+  margin: 16px 16px 0 0;
+  padding: 0;
+  width: $width;
+  // Fix for extra space in Firefox
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  &:before {
+    @include transition(transform .5s ease-in-out);
+    border-bottom: $thickness solid $color-blue-powder;
+    content: '';
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  &:after {
+    @include transition(transform .5s ease-in-out);
+    border-bottom: $thickness solid $color-blue-powder;
+    content: '';
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  &.open {
+    @include transition(border-bottom .5s ease-in-out);
+    border-bottom: $thickness solid transparent;
+    &:before {
+      @include transform(rotate(-405deg) translateY(6px) translateX(-8px));
+      @include transition(transform .5s ease-in-out);
+      border-bottom: $thickness solid $color-orange-slice;
+    }
+    &:after {
+      @include transform(rotate(405deg) translateY(1px));
+      @include transition(transform .5s ease-in-out);
+      border-bottom: $thickness solid $color-orange-slice;
+    }
+  }
+  @include breakpoint($breakpoint-normal-px) {
+    display: none;
+  }
+}
